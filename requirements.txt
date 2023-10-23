@@ -1,0 +1,3 @@
+Python 3.11.6 # python(3) --version
+pytest==7.4.2 # pip3 freeze | grep pytest
+pip 23.2.1 # pip(3) --version (can be pip3, its ok if there is pip but also Python 3 is indicated)

@@ -10,9 +10,11 @@ class Config_Easy:
     request_timeout = 10
     user_name = os.environ.get('USERNAME') 
     env = os.environ.get('BQA_ENV')
-
+    os = os.environ.get('OS')
+    
 config = Config_Easy()
 
 print(config.request_timeout)
 print(config.user_name)
 print(config.env)
+print(config.os)

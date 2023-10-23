@@ -50,13 +50,6 @@ class Config:
         self._register("PARAMETER_JSON")
         self._register("PARAMETER_ENV")
 
-    def get(self, item_name: str) -> Any:  # java
-        # config.get("ITEM_NAME") - EXAMPLE OF CALL in Java
-        if item_name not in self.conf_dict: # if no value - raise an error
-            raise AttributeError(f"Please register '{item_name}' var before usage")
-
-        return self.conf_dict[item_name] # get the value out pf stored one
-
     # python way
     def __getattr__(self, item_name: str) -> Any: #python
         # config.ITEM_NAME - EXAMPLE OF CALL in PYTHON
