@@ -1,12 +1,6 @@
-class JSONConfigProvider():
-    @staticmethod
-    def _read_config(config_path): # parse json file
-        with open(config_path) as json_file: # open json file
-            return json.load(json_file) # convert to dict/treeMap
-
-    @staticmethod
-    def get(item_name: str) -> Any:
-        value = JSONConfigProvider._read_config(
-            ".\\config\\envs\\dev.json"
-        )  # Read the file
-        return value.get(item_name) # get the value from the file by parameter name
+def __getattr__(self, item_name: str) -> Any: #python
+        # config.ITEM_NAME - EXAMPLE OF CALL in PYTHON
+        # read about magic methods in python
+        print(item_name)
+        if item_name not in self.conf_dict:  # if no value - raise an error
+            raise AttributeError(f"Please register '{item_name}' var before usage")
