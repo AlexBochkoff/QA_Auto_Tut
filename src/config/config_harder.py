@@ -13,14 +13,14 @@ from typing import Any
 #         return self.values[item_name]
 
 
-class OSConfigProvider():
+class OSConfigProvider(): #Here we state our provider of OS variables.
     @staticmethod
     def get(item_name: str) -> Any:
-        value = os.getenv(item_name)  # get value from system envs
+        value = os.environ.get(item_name)  # get value from system envs
         return value # return the value
 
 
-class JSONConfigProvider():
+class JSONConfigProvider(): #Here we state our provider of variables indicated within the json file.
     @staticmethod
     def _read_config(config_path): # parse json file
         with open(config_path) as json_file: # open json file
@@ -29,14 +29,12 @@ class JSONConfigProvider():
     @staticmethod
     def get(item_name: str) -> Any:
         value = JSONConfigProvider._read_config(
-            ".\\config\\envs\\dev.json"
+            "src\\config\\envs\\dev.json" # Here is the json file adress with the list of variables or constants we want to use further in our tests.
         )  # Read the file
         return value.get(item_name) # get the value from the file by parameter name
 
-
-
 # should be done using singleton
-class Config:
+class Config: # Here we register our variables provided by the providers above.
     """
     Holds all the settings of your framework
     """
@@ -47,8 +45,12 @@ class Config:
         self.conf_dict = {} # STORE OF VALUES OF YOUR PARAMETERS
         
         # BLOCK FOR REGISTERING THE PARAMETERS
-        self._register("PARAMETER_JSON")
-        self._register("PARAMETER_ENV")
+        self._register('USERNAME')
+        self._register('BQA_ENV')
+        self._register('OS')
+        self._register('REQUEST_TIMEOUT')
+        self._register('BASE_URL')
+        # self._register("PARAMETER_ENV")
 
     # python way
     def __getattr__(self, item_name: str) -> Any: #python
@@ -78,11 +80,13 @@ class Config:
 #     'SELENIUM_GRID_URL': 'http://172.19.0.2:4444/wd/hub', # 0.0.0.0 --> selenium-hub
 #     })
 
-config = Config([OSConfigProvider, JSONConfigProvider])
+
+
+config = Config([OSConfigProvider, JSONConfigProvider]) # Here we call our config.
 
 
 
 # for java - execute from main method
 # got python - execute from the config file
-print(config.get('PARAMETER_JSON'))
-print(config.get('PARAMETER_ENV'))
+# print(config.get('PARAMETER_JSON'))
+# print(config.get('PARAMETER_ENV'))
