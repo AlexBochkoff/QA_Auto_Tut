@@ -13,14 +13,14 @@ from typing import Any
 #         return self.values[item_name]
 
 
-class OSConfigProvider(): #Here we state our provider of OS variables.
+class OSConfigProvider(): #Here we declare our provider of OS variables.
     @staticmethod
     def get(item_name: str) -> Any:
         value = os.environ.get(item_name)  # get value from system envs
         return value # return the value
 
 
-class JSONConfigProvider(): #Here we state our provider of variables indicated within the json file.
+class JSONConfigProvider(): #Here we declare our provider of variables indicated within the json file.
     @staticmethod
     def _read_config(config_path): # parse json file
         with open(config_path) as json_file: # open json file
@@ -85,8 +85,6 @@ class Config: # Here we register our variables provided by the providers above.
 config = Config([OSConfigProvider, JSONConfigProvider]) # Here we call our config.
 
 
-
-# for java - execute from main method
 # got python - execute from the config file
 # print(config.get('PARAMETER_JSON'))
 # print(config.get('PARAMETER_ENV'))

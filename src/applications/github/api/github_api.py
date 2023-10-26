@@ -1,6 +1,6 @@
 import requests
 
-class GitHubAPI: # Here we state all the api methods we use in tests.
+class GitHubAPI: # Here we declare all the api methods we use in tests.
     """Current class contains every API call we use in tests"""
                       #domain 
     def __init__(self,base_url) -> None:
