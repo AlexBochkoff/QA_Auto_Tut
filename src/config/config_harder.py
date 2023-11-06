@@ -2,6 +2,9 @@ import json
 import os
 from typing import Any
 
+# First of all, you should add variables to json file, then add them in config class to register, 
+# and finally reuse them in our tests or any other places allover the project.
+
 
 # class DictConfigProvider():
 

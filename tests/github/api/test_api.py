@@ -66,7 +66,7 @@ def test_check_repos_can_be_found(github_api_client): # Check that user can find
 def test_check_repos_cannot_be_found(github_api_client): # Check that user can find any existing repo from github.
     repos = github_api_client.get_repos('89a7sd56gasd')
 
-    #print(repos) -- Used here for debugging only. Should be deleted after checkout. 
+    #print(repos) # -- Used here for debugging only. Should be deleted after checkout. 
 
     assert repos['total_count'] == 0
     assert len(repos['items']) == 0

@@ -20,7 +20,8 @@ class GitHubAPI: # Here we declare all the api methods we use in tests.
             f"{self.base_url}/search/repositories", #?q={repos_search_param}" -- also can be used in url here. 
             params={'q' : repos_search_param}
             )
+        # print(f"Response retriewed {r}")  # For validation that we get the info needed we can use this simple print to see the body of the response.
         
         r.raise_for_status()
-        
+                
         return r.json()
