@@ -22,7 +22,7 @@ def test_api_os():
 def test_api_lists():
     assert [1, 2, 3] == [1, 2, 3] # Comparison between lists
     # or:
-    # if [1, 2, 3] != [3, 2, 1]:
+    # if [1, 2, 3] != [1, 2, 3]:
     #     raise AssertionError("Not equal")
 
 def test_http_status_code_200():
